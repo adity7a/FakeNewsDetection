@@ -60,7 +60,10 @@ MODEL_DIR = "models"
 
 #  LOAD MODEL 
 print("Loading model...")
-model = tf.keras.models.load_model(f"{MODEL_DIR}/bilstm_model.keras")
+model = tf.keras.models.load_model(
+    f"{MODEL_DIR}/bilstm_model.keras",
+    compile=False
+)
 
 with open(f"{MODEL_DIR}/tokenizer.pkl", "rb") as f:
     tokenizer = pickle.load(f)
