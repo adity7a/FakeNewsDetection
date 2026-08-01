@@ -61,8 +61,7 @@ MODEL_DIR = "models"
 #  LOAD MODEL 
 print("Loading model...")
 model = tf.keras.models.load_model(
-    f"{MODEL_DIR}/bilstm_model.keras",
-    compile=False
+    f"{MODEL_DIR}/bilstm_model.h5"
 )
 
 with open(f"{MODEL_DIR}/tokenizer.pkl", "rb") as f:
