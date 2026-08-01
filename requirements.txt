@@ -1,0 +1,9 @@
+flask==3.0.3
+python-dotenv==1.0.1
+nltk==3.8.1
+tensorflow==2.15.0
+numpy==1.26.4
+mysql-connector-python==8.3.0
+requests==2.31.0
+google-genai==0.3.0
+gunicorn==21.2.0

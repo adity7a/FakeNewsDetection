@@ -10,16 +10,16 @@ import mysql.connector
 import requests
 from google import genai
 
-# ── LOAD ENV ──────────────────────────────────────────────
+# LOAD ENV 
 load_dotenv()
 
-# ── NLTK ──────────────────────────────────────────────────
+# NLTK 
 nltk.download('stopwords', quiet=True)
 stop_words = set(stopwords.words('english'))
 
 app = Flask(__name__)
 
-# ── GEMINI CLIENT ─────────────────────────────────────────
+# GEMINI CLIENT 
 try:
     client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
     print("Gemini AI Connected ✅")
@@ -27,7 +27,7 @@ except Exception as e:
     print("Gemini ERROR:", e)
     client = None
 
-# ── DB CONNECT ────────────────────────────────────────────
+#  DB CONNECT 
 try:
     db = mysql.connector.connect(
         host=os.getenv("DB_HOST"),
@@ -53,11 +53,11 @@ except Exception as e:
     print("DB ERROR:", e)
     db, cursor = None, None
 
-# ── CONFIG ────────────────────────────────────────────────
+# CONFIG 
 MAX_LEN   = 200
 MODEL_DIR = "models"
 
-# ── LOAD MODEL ────────────────────────────────────────────
+#  LOAD MODEL 
 print("Loading model...")
 model = tf.keras.models.load_model(f"{MODEL_DIR}/bilstm_model.keras")
 
@@ -70,7 +70,7 @@ with open(f"{MODEL_DIR}/label_encoder.pkl", "rb") as f:
 print("Model loaded ✅")
 print("Classes:", le.classes_)  # ['FAKE' 'TRUE']
 
-# ── CLEAN TEXT — same as train_model.py ───────────────────
+
 def clean_text(text, category=""):
     # training used: category + statement combined
     combined = (str(category) + " " + str(text)).strip()
@@ -83,7 +83,7 @@ def clean_text(text, category=""):
     )
     return combined.strip()
 
-# ── ML PREDICT ────────────────────────────────────────────
+# ── ML PREDICT 
 def ml_predict(text, category=""):
     cleaned    = clean_text(text, category)
     seq        = tokenizer.texts_to_sequences([cleaned])
@@ -234,7 +234,7 @@ def get_fact_check(text):
     try:
         api_key = os.getenv("FACT_API_KEY")
 
-        # 🔹 Safety checks
+        #  Safety checks
         if not api_key:
             print("FACT API KEY missing ❌")
             return []
@@ -251,7 +251,7 @@ def get_fact_check(text):
 
         res = requests.get(url, params=params, timeout=5)
 
-        # 🔹 HTTP error handling
+        #  HTTP error handling
         if res.status_code != 200:
             print("FACT API ERROR:", res.status_code, res.text)
             return []

@@ -1,29 +1,24 @@
-# 🔹 Python cache
+
+_# Python cache
 __pycache__/
 *.pyc
 *.pyo
 
-# 🔹 Virtual environment
+# Virtual environment
 venv/
 env/
 
-# 🔹 Environment variables (secrets)
+# Environment variables
 .env
 
-# 🔹 Jupyter Notebook checkpoints
+# Jupyter
 .ipynb_checkpoints/
 
-# 🔹 Data files (heavy)
+# Data files
 data/
 *.csv
 
-# 🔹 ML models (heavy)
-*.pkl
-*.keras
-*.h5
-
-# 🔹 VS Code files
-.vscode/
+# VS Code / temp files
 tempCodeRunnerFile.py
 
 # 🔹 OS files
