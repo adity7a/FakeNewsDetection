@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import nltk
 from nltk.corpus import stopwords
 import tensorflow as tf
-from keras.preprocessing.sequence import pad_sequences
+from tensorflow.keras.preprocessing.sequence import pad_sequences
 import mysql.connector
 import requests
 from google import genai
