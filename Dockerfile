@@ -9,6 +9,6 @@ RUN python -c "import nltk; nltk.download('stopwords')"
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 10000
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--timeout", "120", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:10000", "--timeout", "120", "app:app"]
