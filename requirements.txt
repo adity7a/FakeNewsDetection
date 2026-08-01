@@ -1,7 +1,7 @@
 flask==3.0.3
 python-dotenv==1.0.1
 nltk==3.8.1
-tensorflow==2.15.0
+tensorflow-cpu==2.15.0
 numpy==1.26.4
 mysql-connector-python==8.3.0
 requests==2.31.0
